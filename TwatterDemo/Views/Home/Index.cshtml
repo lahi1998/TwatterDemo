@@ -1,0 +1,123 @@
+﻿@model TwatterDemo.Models.TwatsTokenViewModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Page Title</title>
+
+    <link rel="stylesheet" href="~/css/Home.css" />
+</head>
+<body class="background">
+
+    @if (Model.Token == null)
+    {
+        <!-- Login popup -->
+        <div id="loginPopup" class="popupLogin" style="display: block;">
+            <div class="popupLoginContent">
+                <img src="/images/TwatterIcon.png" alt="twatter Icon" style=" width: 50%; height: auto; margin-left: 25%; margin-top: 5vh" />
+                <div style="margin-top: 2vh;">
+                    <ul>
+                        <li><button type="button" id="navigateRegister" class="popupLoginBtns">Sign Up</button></li>
+                        <li><button type="button" id="navigateLogin" class="popupLoginBtns">Login</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    <!-- Popup for posting -->
+    @if (Model.Token != null)
+    {
+        <div id="postPopup" class="popupPost">
+            <div class="popupPostContent">
+                <span class="close" onclick="closePostPopup()">&times;</span>
+                <div id="postForm">
+                    <h2>Twat your heart away</h2>
+                    <form method="post" action="/Home/Index">
+                        <div class="form-group">
+                            <textarea id="content" name="content" rows="7" cols="50" required>
+                                    </textarea>
+                        </div>
+                        <button type="submit">Ok</button>
+                        <button onclick="closePostPopup()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="column left">
+
+        <img src="/images/TwatterIcon.png" alt="twatter Icon" style=" width: auto; height: 20vh; margin-left: 10%; margin-top: 5vh" />
+
+        <div class="uiArea">
+            <ul>
+                <li>
+                    <form>
+                        <input class="uiSearchField" type="text" placeholder="Search..." />
+                    </form>
+                </li>
+                <li><button type="button" id="postbtn" class="uiMenuBtn" onclick="postPopup">Create a Twat</button></li>
+                <li><button type="button" id="navigateProfile" class="uiMenuBtn">Profile</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="column middle">
+        <div class="feedArea">
+            <h1 class="feedTitle">Feed</h1>
+            <ul class="post-list">
+                @if (Model.Twats.Count == 0)
+                {
+                    <li><p>No data available.</p></li>
+                }
+                else
+                {
+                    @foreach (var twats in Model.Twats)
+                    {
+                        <li>
+                            <div class="twats">
+                                <div class="column twatsInfo">
+                                    @if (twats.userImg != "No Img")
+                                    {
+                                        <img class="Info" src="twats.UserImg" alt="Twat Image" />
+                                    }
+                                    else
+                                    {
+                                        <img class="Info" src="images\profile-icon-9.png" alt=" empty profile pic" style="height: auto; width: 30%; border: solid 2px black; border-radius: 5px" />
+                                    }
+                                    <ul>
+                                        <li><p class="Info">@twats.username</p></li>
+                                        <li><p class="Info">@twats.timeOfPost</p></li>
+                                    </ul>
+                                </div>
+                                <div class="column twatsContent">
+                                    <p class="Content">@twats.content</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- <img src="snabelAUrl.Content(Post.UserImg)" alt="User Image" /> -->
+    <div class="column right">
+        <img src="/images/133-1335198_ads-your-ad-here-png.png" alt="ad img" style="width: 90%; margin-left: 5%" />
+        <img src="/images/133-1335198_ads-your-ad-here-png.png" alt="ad img" style="width: 90%; margin-left: 5%" />
+    </div>
+
+
+
+    <script src="/js/navigateProfile.js"></script>
+    <script src="/js/navigateRegister.js"></script>
+    <script src="/js/navigateLogin.js"></script>
+    <script src="/js/postPopup.js"></script>
+</body>
+</html>

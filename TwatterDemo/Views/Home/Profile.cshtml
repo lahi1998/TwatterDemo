@@ -1,0 +1,85 @@
+﻿@model List<Twats>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Page Title</title>
+
+    <link rel="stylesheet" href="~/css/Home.css" />
+</head>
+<body class="background">
+    <div class="column left">
+
+        <img src="/images/TwatterIcon.png" alt="ad img" style=" width: auto; height: 20vh; margin-left: 10%; margin-top: 5vh" />
+
+        <div class="uiArea">
+            <ul>
+                <li>
+                    <form>
+                        <input class="uiSearchField" type="text" placeholder="Search..." />
+                    </form>
+                </li>
+                <li><button class="uiMenuBtn">Create post</button></li>
+                <li><button class="uiMenuBtn">Following</button></li>
+                <li><button id="navigateIndex" class="uiMenuBtn">Main</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="column middle">
+
+        <div class="profileSection">
+            <img class="Info" src="images\profile-icon-9.png" alt=" empty profile pic" style="height: auto; width: 30%;" />
+            <!-- add all the other user stuff here-->
+        </div>
+
+        <div class="feedArea">
+            <h1 class="feedTitle">Feed</h1>
+            <ul class="post-list">
+                @if (Model == null)
+                {
+                    <li><p>No data available.</p></li>
+                }
+                else
+                {
+                    @foreach (var twats in Model)
+                    {
+                        <li>
+                            <div class="twats">
+                                <div class="column twatsInfo">
+                                    @if (twats.userImg == "No Img")
+                                    {
+                                        <img class="Info" src="twats.UserImg" alt="Twat Image" />
+                                    }
+                                    else
+                                    {
+                                        <img class="Info" src="images\profile-icon-9.png" alt=" empty profile pic" style="height: auto; width: 30%; border: solid 2px black; border-radius: 5px" />
+                                    }
+                                    <ul>
+                                        <li><p class="Info">@twats.username</p></li>
+                                        <li><p class="Info">@twats.timeOfPost</p></li>
+                                    </ul>
+                                </div>
+                                <div class="column twatsContent">
+                                    <p class="Content">@twats.content</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- <img src="snabelAUrl.Content(Post.UserImg)" alt="User Image" /> -->
+    <div class="column right">
+        <img src="/images/133-1335198_ads-your-ad-here-png.png" alt="ad img" style="width: 90%; margin-left: 5%" />
+        <img src="/images/133-1335198_ads-your-ad-here-png.png" alt="ad img" style="width: 90%; margin-left: 5%" />
+    </div>
+
+
+    <script src="/js/Navigate.js"></script>
+</body>
+</html>

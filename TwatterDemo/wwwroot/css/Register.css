@@ -1,0 +1,14 @@
+﻿.SignUpContent {
+    text-align: center;
+    margin: 20% auto;
+}
+
+.form-group {
+    margin-top: 2vh;
+}
+
+.signUpBtn {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 2vh;
+}

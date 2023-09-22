@@ -1,0 +1,13 @@
+﻿.LoginContent {
+    text-align: center;
+    margin: 20% auto;
+}
+
+.form-group{
+    margin-top: 2vh;
+}
+
+.LoginBtn{
+    margin-left: 12vw;
+    margin-top: 2vh;
+}

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Page Title</title>
+
+    <link rel="stylesheet" href="~/css/Register.css" />
+</head>
+<body class="background">
+
+    <!-- Sign Up -->
+        <div class="SignUpContent">
+            <div id="signupForm">
+                <h2>SignUp</h2>
+                <form method="post" action="/Home/Register">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="userName" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required />
+                    </div>
+                <button class="signUpBtn" type="submit">Ok</button>
+                <button class="signUpBtn" onclick="">Cancel</button>
+                </form>
+            </div>
+        </div>
+</body>
+</html>
